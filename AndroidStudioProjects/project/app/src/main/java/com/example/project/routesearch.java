@@ -34,9 +34,6 @@ public class routesearch extends AppCompatActivity {
         destination=findViewById(R.id.destinationEditText);
         b=findViewById(R.id.showRouteButton);
 
-        start=starting.getText().toString();
-        dest=starting.getText().toString();
-
     }
 
     public void onClick1(View v){
@@ -54,6 +51,8 @@ public class routesearch extends AppCompatActivity {
     }
 
     public void onClick3(View v){
+        start=starting.getText().toString();
+        dest=starting.getText().toString();
 
         if(start.length() == 0){
 
