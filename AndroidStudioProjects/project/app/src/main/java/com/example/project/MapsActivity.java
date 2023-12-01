@@ -162,7 +162,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void onShare(View view)
     {
-        Intent intent = new Intent(this, shareRoute.class);
+        Intent intent = new Intent(this, share.class);
         startActivity(intent);
     }
 

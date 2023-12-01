@@ -110,10 +110,10 @@
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="42dp"
-        android:layout_height="37dp"
+        android:layout_width="49dp"
+        android:layout_height="44dp"
         android:layout_marginStart="48dp"
-        android:layout_marginBottom="245dp"
+        android:layout_marginBottom="240dp"
         android:src="@drawable/contacts"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/share1"
@@ -122,11 +122,31 @@
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="38dp"
-        android:layout_height="37dp"
+        android:layout_width="54dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="176dp"
         android:src="@drawable/whatsapp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/share2" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="42dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/mail"
+        app:layout_constraintBottom_toTopOf="@+id/share4"
+        app:layout_constraintEnd_toStartOf="@+id/share3" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/telegram"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/share4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
