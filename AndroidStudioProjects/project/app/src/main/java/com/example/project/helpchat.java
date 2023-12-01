@@ -23,10 +23,7 @@ public class helpchat extends AppCompatActivity {
 
     }
     public void onClick1(View v){
-        Intent intent = new Intent(helpchat.this, homescreen.class);
-
-        startActivity(intent);
-
+        finish();
     }
 
     public void onClick2(View v){
