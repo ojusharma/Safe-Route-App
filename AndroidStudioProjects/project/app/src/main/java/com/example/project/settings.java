@@ -25,5 +25,11 @@ public class settings extends AppCompatActivity {
             startActivity(intent);
 
         }
+    public void GOTOUSER(View v){
+        Intent intent = new Intent(settings.this, profile.class);
+
+        startActivity(intent);
+
+    }
 
 }
