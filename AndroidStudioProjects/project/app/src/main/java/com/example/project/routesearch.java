@@ -65,6 +65,8 @@ public class routesearch extends AppCompatActivity {
         }
         else {
             Intent intent = new Intent(routesearch.this, routeinfo.class);
+            intent.putExtra("Start", start);
+            intent.putExtra("End", dest);
             startActivity(intent);
         }
 
