@@ -1,9 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapsActivity" />
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="408dp"
+        android:layout_height="571dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton"
+        app:layout_constraintVertical_bias="0.0"
+        tools:context=".MapsActivity" />
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="54dp"
+        android:layout_height="41dp"
+        android:onClick="onBack"
+        android:src="@drawable/backarrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/reportButton"
+        android:layout_width="270dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#B30000"
+        android:onClick="onReport"
+        android:text="          Help/ Report Incident"
+        android:textColor="@android:color/white"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/map" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="37dp"
+        android:layout_height="33dp"
+        android:onClick="onReport"
+        app:layout_constraintBottom_toBottomOf="@+id/reportButton"
+        app:layout_constraintEnd_toEndOf="@+id/reportButton"
+        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintStart_toStartOf="@+id/reportButton"
+        app:layout_constraintTop_toTopOf="@+id/reportButton"
+        app:layout_constraintVertical_bias="0.47"
+        app:srcCompat="@drawable/exclaim" />
+
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_width="139dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#000000"
+        android:onClick="onShare"
+        android:text="       Share"
+        android:textColor="@android:color/white"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reportButton" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="37dp"
+        android:layout_height="33dp"
+        android:onClick="onShare"
+        app:layout_constraintBottom_toBottomOf="@+id/shareButton"
+        app:layout_constraintEnd_toEndOf="@+id/shareButton"
+        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintStart_toStartOf="@+id/shareButton"
+        app:layout_constraintTop_toTopOf="@+id/shareButton"
+        app:layout_constraintVertical_bias="0.47"
+        app:srcCompat="@drawable/share" />
+
+    <Button
+        android:id="@+id/endButton"
+        android:layout_width="139dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#000000"
+        android:onClick="onEnd"
+        android:text="       End"
+        android:textColor="@android:color/white"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reportButton" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="29dp"
+        android:layout_height="27dp"
+        android:onClick="onEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/endButton"
+        app:layout_constraintEnd_toEndOf="@+id/endButton"
+        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintStart_toStartOf="@+id/endButton"
+        app:layout_constraintTop_toTopOf="@+id/endButton"
+        app:layout_constraintVertical_bias="0.52"
+        app:srcCompat="@drawable/cross" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
