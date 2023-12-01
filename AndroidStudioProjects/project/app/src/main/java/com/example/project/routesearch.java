@@ -13,8 +13,7 @@ import android.widget.Toast;
 
 public class routesearch extends AppCompatActivity {
 
-    ImageView setting;
-    ImageView profile;
+    ImageView setting;ImageView profile;
 
     EditText starting;
     EditText destination;
@@ -34,9 +33,6 @@ public class routesearch extends AppCompatActivity {
         destination=findViewById(R.id.destinationEditText);
         b=findViewById(R.id.showRouteButton);
 
-        start=starting.getText().toString();
-        dest=starting.getText().toString();
-
     }
 
     public void onClick1(View v){
@@ -54,10 +50,12 @@ public class routesearch extends AppCompatActivity {
     }
 
     public void onClick3(View v){
+        start=starting.getText().toString();
+        dest=starting.getText().toString();
 
-        if(start.length() == 0){
+        if(start.isEmpty()){
 
-            Toast toast = Toast.makeText(getApplicationContext(),"Please Enter your Staring Destination ", Toast.LENGTH_SHORT );
+            Toast toast = Toast.makeText(getApplicationContext(),"Please Enter your Starting Destination ", Toast.LENGTH_SHORT );
             toast.show();
         }
         else if( dest.length() == 0){
