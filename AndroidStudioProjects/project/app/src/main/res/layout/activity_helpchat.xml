@@ -55,4 +55,14 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/chat1"
+        android:layout_width="314dp"
+        android:layout_height="188dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="388dp"
+        android:text="Assistant AgHi, are you currently in danger or distress?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
