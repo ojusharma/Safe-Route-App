@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".routesearch">
+
+    <TextView
+        android:id="@+id/startLocationTextView"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="416dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Starting Location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/startingLocationEditText"
+        android:layout_width="174dp"
+        android:layout_height="57dp"
+        android:layout_below="@+id/startLocationTextView"
+        android:layout_marginTop="408dp"
+        android:layout_marginEnd="7dp"
+        android:hint="Enter Starting Location"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/settings"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="16dp"
+        android:onClick="onClick1"
+        android:src="@drawable/settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/pro"
+        android:layout_width="58dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="onClick2"
+        android:src="@drawable/profile_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="263dp"
+        android:layout_height="198dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="84dp"
+        android:src="@drawable/route"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/maintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:text="Safe-Route Sharing"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="144dp"
+        android:text="Travel Made Safe!"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maintext" />
+
+    <TextView
+        android:id="@+id/destinationTextView"
+        android:layout_width="132dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/startingLocationEditText"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="480dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Destination"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/destinationEditText"
+        android:layout_width="173dp"
+        android:layout_height="54dp"
+        android:layout_below="@+id/destinationTextView"
+        android:layout_marginTop="488dp"
+        android:hint="Enter Destination"
+        android:padding="16dp"
+        app:layout_constraintStart_toEndOf="@+id/destinationTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/showRouteButton"
+        android:layout_width="288dp"
+        android:layout_height="64dp"
+        android:layout_below="@+id/destinationEditText"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        android:onClick="onClick3"
+        android:text="Show Route"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/destinationTextView" />
+
+    <ImageView
+        android:id="@+id/starting"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="128dp"
+        android:src="@drawable/startinglocation"
+        app:layout_constraintBottom_toTopOf="@+id/showRouteButton"
+        app:layout_constraintEnd_toStartOf="@+id/startLocationTextView" />
+
+    <ImageView
+        android:id="@+id/destination"
+        android:layout_width="57dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="52dp"
+        android:src="@drawable/destination"
+        app:layout_constraintBottom_toTopOf="@+id/showRouteButton"
+        app:layout_constraintEnd_toStartOf="@+id/destinationTextView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
