@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -151,5 +152,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void onBack(View view) {
         finish();
+    }
+
+    public void onReport(View view)
+    {
+        Intent intent = new Intent(this, helpchat.class);
+        startActivity(intent);
+    }
+
+    public void onShare(View view)
+    {
+        Intent intent = new Intent(this, shareRoute.class);
+        startActivity(intent);
+    }
+
+    public void onEnd(View view)
+    {
+        Intent intent = new Intent(this, homescreen.class);
+        startActivity(intent);
     }
 }
