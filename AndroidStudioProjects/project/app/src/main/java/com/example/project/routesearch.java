@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class routesearch extends AppCompatActivity {
 
@@ -18,6 +19,9 @@ public class routesearch extends AppCompatActivity {
     EditText starting;
     EditText destination;
     Button b;
+    String start;
+    String dest;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +34,8 @@ public class routesearch extends AppCompatActivity {
         destination=findViewById(R.id.destinationEditText);
         b=findViewById(R.id.showRouteButton);
 
-        String start=starting.getText().toString();
-        String dest=starting.getText().toString();
+        start=starting.getText().toString();
+        dest=starting.getText().toString();
 
     }
 
@@ -50,9 +54,23 @@ public class routesearch extends AppCompatActivity {
     }
 
     public void onClick3(View v){
-        Intent intent = new Intent(routesearch.this, routeinfo.class);
 
-        startActivity(intent);
+        if(start.length() == 0){
+
+            Toast toast = Toast.makeText(getApplicationContext(),"Please Enter your Staring Destination ", Toast.LENGTH_SHORT );
+            toast.show();
+        }
+        else if( dest.length() == 0){
+            Toast toast = Toast.makeText(getApplicationContext(),"Please Enter your Final Destination", Toast.LENGTH_SHORT );
+            toast.show();
+
+        }
+        else {
+            Intent intent = new Intent(routesearch.this, routeinfo.class);
+            startActivity(intent);
+        }
+
+
 
     }
 }
