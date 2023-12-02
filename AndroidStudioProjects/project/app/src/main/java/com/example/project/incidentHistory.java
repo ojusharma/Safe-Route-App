@@ -24,4 +24,10 @@ public class incidentHistory extends AppCompatActivity {
 
         startActivity(intent);
     }
+    public void onClick4(View v){
+        Intent intent = new Intent(incidentHistory.this, helpchat.class);
+
+        startActivity(intent);
+
+    }
 }
