@@ -56,7 +56,7 @@ public class routesearch extends AppCompatActivity {
 
     public void onClick3(View v){
         start=starting.getText().toString();
-        dest=starting.getText().toString();
+        dest=destination.getText().toString();
 
         if(start.isEmpty()){
 

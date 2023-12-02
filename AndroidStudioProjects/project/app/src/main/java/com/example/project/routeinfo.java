@@ -20,12 +20,16 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.PolyUtil;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class routeinfo extends AppCompatActivity {
 
@@ -33,6 +37,7 @@ public class routeinfo extends AppCompatActivity {
     private GoogleMap googleMap;
     private Polyline routePolyline;
     String start, end;
+    ArrayList<String> locationList, latLong;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,26 +47,114 @@ public class routeinfo extends AppCompatActivity {
         start = intent.getStringExtra("Start");
         end = intent.getStringExtra("End");
 
+        ArrayList<String> locationList = new ArrayList<>();
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAA");
+
+        locationList.add(start);
+        locationList.add(end);
+        System.out.println(start + end);
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
-
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap map) {
                 googleMap = map;
-                fetchDirections();
             }
         });
+        new Geocoding().execute(locationList);
+
     }
 
-    private void fetchDirections() {
+    private void fetchDirections(ArrayList<String> latLong1) {
 
-        String directionsUrl = "https://maps.googleapis.com/maps/api/directions/json" +
-                "?origin=49.9393,-119.3947" +
-                "&destination=49.9322,-119.3992" +
-                "&key=AIzaSyC7ag49tvfpeOkIjnlZTSzKiKW6xR9wkAg";
+        if(latLong1.size()==4)
+        {
+            String directionsUrl = "https://maps.googleapis.com/maps/api/directions/json" +
+                    "?origin=" + latLong1.get(0) + "," + latLong1.get(1) +
+                    "&destination=" + latLong1.get(2)+ "," + latLong1.get(3) +
+                    "&key=AIzaSyC7ag49tvfpeOkIjnlZTSzKiKW6xR9wkAg";
 
-        new FetchDirectionsTask().execute(directionsUrl);
+            new FetchDirectionsTask().execute(directionsUrl);
+        }
+        else
+        {
+            Toast.makeText(routeinfo.this, "Failed to fetch data", Toast.LENGTH_SHORT).show(); finish();
+        }
+    }
+
+    private class Geocoding extends AsyncTask<List<String>, Void, String[]> {
+        @Override
+        protected String[] doInBackground(List<String>... params) {
+            List<String> locations = params[0];
+            String[] retVal = new String[2];
+            int i=0;
+
+            if (locations != null && !locations.isEmpty()) {
+                StringBuilder stringBuilder;
+                for (String location : locations) {
+                    stringBuilder = new StringBuilder();
+                    String apiKey = "AIzaSyC7ag49tvfpeOkIjnlZTSzKiKW6xR9wkAg";
+                    String apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=" + apiKey;
+
+                    try {
+                        URL url = new URL(apiUrl);
+                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+                        InputStream inputStream = connection.getInputStream();
+                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                        String line;
+
+                        while ((line = bufferedReader.readLine()) != null) {
+                            stringBuilder.append(line).append("\n");
+                        }
+
+                        retVal[i] = stringBuilder.toString(); i++;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                return retVal;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String[] result) {
+            super.onPostExecute(result);
+            if (result != null)
+            {
+                ArrayList<String> latLong1= new ArrayList<String>();
+                int j=0;
+                try
+                {
+                    while(j!=2) {
+                        JSONObject jsonObject = new JSONObject(result[j]);
+                        JSONArray results = jsonObject.getJSONArray("results");
+                        for (int i = 0; i < results.length(); i++) {
+                            JSONObject location = results.getJSONObject(i).getJSONObject("geometry").getJSONObject("location");
+                            double latitude = location.getDouble("lat");
+                            double longitude = location.getDouble("lng");
+
+                            // Use latitude and longitude as needed
+                            // For example, display or utilize them in your app
+                            String a = "" + latitude;
+                            String b = "" + longitude;
+                            latLong1.add(a);
+                            latLong1.add(b);
+                        }
+                        j++;
+                    }
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                fetchDirections(latLong1);
+            }
+            else {
+                Toast.makeText(routeinfo.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 
     private class FetchDirectionsTask extends AsyncTask<String, Void, String> {
@@ -113,8 +206,8 @@ public class routeinfo extends AppCompatActivity {
             LatLng originLatLng = new LatLng(startLocation.getDouble("lat"), startLocation.getDouble("lng"));
             LatLng destinationLatLng = new LatLng(endLocation.getDouble("lat"), endLocation.getDouble("lng"));
 
-            googleMap.addMarker(new MarkerOptions().position(originLatLng).title("UBCO"));
-            googleMap.addMarker(new MarkerOptions().position(destinationLatLng).title("U3"));
+            googleMap.addMarker(new MarkerOptions().position(originLatLng).title(start));
+            googleMap.addMarker(new MarkerOptions().position(destinationLatLng).title(end));
 
             googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
@@ -189,4 +282,6 @@ public class routeinfo extends AppCompatActivity {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
+
+
 }
