@@ -1,25 +1,37 @@
 package com.example.project;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+import com.example.project.databinding.ActivityMapsBinding;
+import com.google.maps.android.PolyUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class incidentHistory extends AppCompatActivity {
+public class incidentHistory extends FragmentActivity implements OnMapReadyCallback {
+
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private Polyline routePolyline;
@@ -27,7 +39,7 @@ public class incidentHistory extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        uper.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -36,6 +48,7 @@ public class incidentHistory extends AppCompatActivity {
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -45,11 +58,11 @@ public class incidentHistory extends AppCompatActivity {
                 "&destination=49.9322,-119.3992" +
                 "&key=AIzaSyC7ag49tvfpeOkIjnlZTSzKiKW6xR9wkAg";
 
-        new MapsActivity.FetchDirectionsTask().execute(directionsUrl);
+        new FetchDirectionsTask().execute(directionsUrl);
 
-        if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                checkSelfPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
             return;
         }
 
@@ -124,7 +137,7 @@ public class incidentHistory extends AppCompatActivity {
 
         if (requestCode == 1) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                         checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     mMap.setMyLocationEnabled(true);
                 }
@@ -132,15 +145,13 @@ public class incidentHistory extends AppCompatActivity {
         }
     }
 
-    public void onBack(View view)
-    {
+    public void onBack(View view) {
         finish();
     }
 
     public void onPro(View view)
     {
-        Intent intent = new Intent(incidentHistory.this, profile.class);
-
+        Intent intent = new Intent(this, homescreen.class);
         startActivity(intent);
     }
 }
