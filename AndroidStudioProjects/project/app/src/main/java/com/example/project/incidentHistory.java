@@ -16,5 +16,5 @@ public class incidentHistory extends AppCompatActivity {
     public void onBack(View view)
     {
         finish();
-    }
+}
 }
