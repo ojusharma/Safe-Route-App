@@ -42,6 +42,11 @@ public class routesearch extends AppCompatActivity {
 
     }
 
+    public void back(View view)
+    {
+        finish();
+    }
+
     public void onClick2(View v){
         Intent intent = new Intent(routesearch.this, profile.class);
 
