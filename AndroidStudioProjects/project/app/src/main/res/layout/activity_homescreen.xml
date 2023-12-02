@@ -10,12 +10,15 @@
         android:id="@+id/report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
         android:layout_marginBottom="40dp"
+        android:backgroundTint="@android:color/holo_red_dark"
         android:onClick="onClick4"
         android:text="Report Incident/Seek Help"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/hellotext"
@@ -89,12 +92,15 @@
 
     <Button
         android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="144dp"
+        android:layout_width="128dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="#000000"
         android:onClick="onClick3"
         android:text="Start Route"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hellotext" />
 </androidx.constraintlayout.widget.ConstraintLayout>
