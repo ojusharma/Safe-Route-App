@@ -49,6 +49,7 @@ public class routeinfo extends AppCompatActivity {
         start = intent.getStringExtra("Start");
         end = intent.getStringExtra("End");
         ArrayList<String> locationList = new ArrayList<>();
+        latLongs = new String[4];
 
         locationList.add(start);
         locationList.add(end);
@@ -73,7 +74,10 @@ public class routeinfo extends AppCompatActivity {
                     "?origin=" + latLong1.get(0) + "," + latLong1.get(1) +
                     "&destination=" + latLong1.get(2)+ "," + latLong1.get(3) +
                     "&key=AIzaSyC7ag49tvfpeOkIjnlZTSzKiKW6xR9wkAg";
-
+            latLongs[0] = latLong1.get(0);
+            latLongs[1] = latLong1.get(1);
+            latLongs[2] = latLong1.get(2);
+            latLongs[3] = latLong1.get(3);
             new FetchDirectionsTask().execute(directionsUrl);
         }
         else
@@ -115,7 +119,6 @@ public class routeinfo extends AppCompatActivity {
                         finish();
                     }
                 }
-                latLongs = Arrays.copyOf(retVal, retVal.length);
                 return retVal;
             }
             return null;
@@ -138,12 +141,11 @@ public class routeinfo extends AppCompatActivity {
                             double latitude = location.getDouble("lat");
                             double longitude = location.getDouble("lng");
 
-                            // Use latitude and longitude as needed
-                            // For example, display or utilize them in your app
                             String a = "" + latitude;
                             String b = "" + longitude;
                             latLong1.add(a);
                             latLong1.add(b);
+
                         }
                         j++;
                     }
