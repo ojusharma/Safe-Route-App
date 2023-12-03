@@ -82,7 +82,7 @@ public class routeinfo extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(routeinfo.this, "Failed to fetch data", Toast.LENGTH_SHORT).show(); finish();
+            Toast.makeText(routeinfo.this, "Failed to fetch data. Check location name!", Toast.LENGTH_SHORT).show(); finish();
         }
     }
 
