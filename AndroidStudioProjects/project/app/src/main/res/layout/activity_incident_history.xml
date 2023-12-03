@@ -47,4 +47,87 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
 
+    <ScrollView
+        android:layout_width="230dp"
+        android:layout_height="224dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="    27th February , 2023"
+                android:drawableLeft="@drawable/fire"
+                android:textSize="16sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fire hazard on John Hindle Drive"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp" />
+            <ImageView
+                android:id="@+id/firescale"
+                android:layout_width="241dp"
+                android:layout_height="82dp"
+                android:padding="8dp"
+                android:src="@drawable/firescale"
+                android:textSize="16sp"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10th January , 2023"
+                android:drawableLeft="@drawable/caracc"
+                android:drawablePadding="10dip"
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ice-Skidding Accident on Academy Way"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="       23rd June , 2022"
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:drawableLeft="@drawable/stabbing"
+                android:drawablePadding="10dip"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="Attempted Stabbing in front of Corner Store." />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
