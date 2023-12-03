@@ -36,10 +36,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ActivityMapsBinding binding;
     private Polyline routePolyline;
     private Marker currentLocationMarker;
+    String start, end, lat1, long1, lat2, long2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = this.getIntent();
+        start = intent.getStringExtra("start");
+        end = intent.getStringExtra("end");
+        lat1 = intent.getStringExtra("lat1");
+        long1 = intent.getStringExtra("long1");
+        lat2 = intent.getStringExtra("lat2");
+        long2 = intent.getStringExtra("long2");
 
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -54,8 +62,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         String directionsUrl = "https://maps.googleapis.com/maps/api/directions/json" +
-                "?origin=49.9393,-119.3947" +
-                "&destination=49.9322,-119.3992" +
+                "?origin=" + lat1 + "," + long1 +
+                "&destination=" + lat2 + "," + long2 +
                 "&key=AIzaSyC7ag49tvfpeOkIjnlZTSzKiKW6xR9wkAg";
 
         new FetchDirectionsTask().execute(directionsUrl);
@@ -118,8 +126,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng originLatLng = new LatLng(startLocation.getDouble("lat"), startLocation.getDouble("lng"));
             LatLng destinationLatLng = new LatLng(endLocation.getDouble("lat"), endLocation.getDouble("lng"));
 
-            mMap.addMarker(new MarkerOptions().position(originLatLng).title("UBCO"));
-            mMap.addMarker(new MarkerOptions().position(destinationLatLng).title("U3"));
+            mMap.addMarker(new MarkerOptions().position(originLatLng).title(start));
+            mMap.addMarker(new MarkerOptions().position(destinationLatLng).title(end));
 
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             builder.include(originLatLng);

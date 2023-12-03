@@ -29,6 +29,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class routeinfo extends AppCompatActivity {
@@ -38,6 +39,7 @@ public class routeinfo extends AppCompatActivity {
     private Polyline routePolyline;
     String start, end;
     ArrayList<String> locationList, latLong;
+    String[] latLongs;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -113,6 +115,7 @@ public class routeinfo extends AppCompatActivity {
                         finish();
                     }
                 }
+                latLongs = Arrays.copyOf(retVal, retVal.length);
                 return retVal;
             }
             return null;
@@ -286,6 +289,12 @@ public class routeinfo extends AppCompatActivity {
     public void onNavigation(View view)
     {
         Intent intent = new Intent(this, MapsActivity.class);
+        intent.putExtra("start", start);
+        intent.putExtra("end", end);
+        intent.putExtra("lat1", latLongs[0]);
+        intent.putExtra("long1", latLongs[1]);
+        intent.putExtra("lat2", latLongs[2]);
+        intent.putExtra("long2", latLongs[3]);
         startActivity(intent);
     }
 
