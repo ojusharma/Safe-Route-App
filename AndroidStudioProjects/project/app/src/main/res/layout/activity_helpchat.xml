@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".helpchat">
+
 
     <ImageView
         android:id="@+id/back"
@@ -12,12 +14,67 @@
         android:layout_height="50dp"
         android:layout_marginStart="7dp"
         android:layout_marginTop="16dp"
-
         android:onClick="onClick1"
         android:src="@drawable/backarrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewChat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSend" />
+
+    <!-- Initial message TextView -->
+
+    <!-- Message Input -->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="160dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <!-- Content of the Toolbar goes here -->
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/initialMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="What do you want help with?"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Type your message..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/initialMessage" />
 
     <ImageView
         android:id="@+id/home"
@@ -30,28 +87,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="357dp"
-        android:layout_height="95dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chat1"
-        app:srcCompat="@drawable/thin_blue_bubble" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:text="Help Chat"
         android:textSize="44sp"
         android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toStartOf="@+id/home"
-        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintHorizontal_bias="0.429"
         app:layout_constraintStart_toEndOf="@+id/back"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,105 +105,42 @@
         android:id="@+id/imageView3"
         android:layout_width="69dp"
         android:layout_height="62dp"
+        android:layout_marginStart="171dp"
         android:layout_marginTop="12dp"
         android:src="@drawable/helpchat"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="395dp"
-        android:layout_height="146dp"
-        android:layout_marginTop="104dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/medium_white_bubble" />
-
-    <TextView
-        android:id="@+id/chat1"
-        android:layout_width="346dp"
-        android:layout_height="108dp"
-        android:text="Assistant Agent: Hi, if are you currently in immediate danger or distress, Call 911 for immediate help.\n \nHow can we help you? (Reporting incidents, other questions)"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView13"
-        app:layout_constraintEnd_toEndOf="@+id/imageView13"
-        app:layout_constraintHorizontal_bias="0.653"
-        app:layout_constraintStart_toStartOf="@+id/imageView13"
-        app:layout_constraintTop_toTopOf="@+id/imageView13"
-        app:layout_constraintVertical_bias="0.815" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="39dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/helper"
-        app:layout_constraintBottom_toTopOf="@+id/chat1"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/editTextText"
-        android:layout_width="323dp"
-        android:layout_height="39dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Someone is following me near Hollywood Road."
-        android:textColor="@android:color/white"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView12"
-        app:layout_constraintEnd_toEndOf="@+id/imageView12"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="@+id/imageView12"
-        app:layout_constraintTop_toTopOf="@+id/imageView12"
-        app:layout_constraintVertical_bias="0.647" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="67dp"
         android:layout_height="69dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="544dp"
+        android:layout_marginEnd="16dp"
         android:src="@drawable/profile_icon"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="395dp"
-        android:layout_height="146dp"
-        android:layout_marginTop="52dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12"
-        app:srcCompat="@drawable/medium_white_bubble" />
-
-    <TextView
-        android:id="@+id/chat2"
-        android:layout_width="346dp"
-        android:layout_height="108dp"
-        android:text="Assistant Agent: \n Would you be like to be escorted by a secure vehicle or by a security personnel? \nIf possible, I would suggest going discreetly in a crowded location such as a cafe or a restaurant nearby."
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
-        app:layout_constraintEnd_toEndOf="@+id/imageView14"
-        app:layout_constraintHorizontal_bias="0.653"
-        app:layout_constraintStart_toStartOf="@+id/imageView14"
-        app:layout_constraintTop_toTopOf="@+id/imageView14"
-        app:layout_constraintVertical_bias="0.657" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="39dp"
         android:layout_height="38dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="528dp"
         android:src="@drawable/helper"
-        app:layout_constraintBottom_toTopOf="@+id/chat2"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onSendButtonClick"
+        android:text="Send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewChat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
