@@ -285,6 +285,12 @@ public class routeinfo extends AppCompatActivity {
     public void onIncidentHistory(View view)
     {
         Intent intent = new Intent(this, incidentHistory.class);
+        intent.putExtra("start", start);
+        intent.putExtra("end", end);
+        intent.putExtra("lat1", latLongs[0]);
+        intent.putExtra("long1", latLongs[1]);
+        intent.putExtra("lat2", latLongs[2]);
+        intent.putExtra("long2", latLongs[3]);
         startActivity(intent);
     }
 
