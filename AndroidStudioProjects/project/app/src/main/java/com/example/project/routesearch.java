@@ -27,7 +27,7 @@ public class routesearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routesearch);
 
-        setting=findViewById(R.id.settings);
+        setting=findViewById(R.id.back);
         profile=findViewById(R.id.pro);
         starting=findViewById(R.id.startingLocationEditText);
         destination=findViewById(R.id.destinationEditText);
@@ -56,7 +56,7 @@ public class routesearch extends AppCompatActivity {
 
     public void onClick3(View v){
         start=starting.getText().toString();
-        dest=starting.getText().toString();
+        dest=destination.getText().toString();
 
         if(start.isEmpty()){
 
