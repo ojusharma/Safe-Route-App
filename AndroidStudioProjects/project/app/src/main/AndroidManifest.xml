@@ -19,9 +19,7 @@
         <activity
             android:name=".share"
             android:exported="false" />
-        <activity
-            android:name=".shareRoute"
-            android:exported="false" />
+
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

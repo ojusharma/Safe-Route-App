@@ -2,6 +2,7 @@ package com.example.project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,5 +17,17 @@ public class incidentHistory extends AppCompatActivity {
     public void onBack(View view)
     {
         finish();
+}
+    public void profile(View view)
+    {
+        Intent intent = new Intent(incidentHistory.this, profile.class);
+
+        startActivity(intent);
+    }
+    public void onClick4(View v){
+        Intent intent = new Intent(incidentHistory.this, helpchat.class);
+
+        startActivity(intent);
+
     }
 }
