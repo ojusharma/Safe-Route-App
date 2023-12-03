@@ -46,9 +46,7 @@ public class routeinfo extends AppCompatActivity {
         Intent intent = this.getIntent();
         start = intent.getStringExtra("Start");
         end = intent.getStringExtra("End");
-
         ArrayList<String> locationList = new ArrayList<>();
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAA");
 
         locationList.add(start);
         locationList.add(end);
@@ -111,6 +109,8 @@ public class routeinfo extends AppCompatActivity {
                         retVal[i] = stringBuilder.toString(); i++;
                     } catch (IOException e) {
                         e.printStackTrace();
+                        Toast.makeText(routeinfo.this, "Error finding route. Check location names!", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 }
                 return retVal;
@@ -151,7 +151,8 @@ public class routeinfo extends AppCompatActivity {
                 fetchDirections(latLong1);
             }
             else {
-                Toast.makeText(routeinfo.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(routeinfo.this, "Failed to fetch location data.  Check location names!", Toast.LENGTH_SHORT).show();
+                finish();
             }
 
         }
@@ -175,6 +176,8 @@ public class routeinfo extends AppCompatActivity {
                 return result.toString();
             } catch (Exception e) {
                 e.printStackTrace();
+                Toast.makeText(routeinfo.this, "Error getting directions!", Toast.LENGTH_SHORT).show();
+                finish();
             }
             return null;
         }
@@ -231,6 +234,9 @@ public class routeinfo extends AppCompatActivity {
             googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
         } catch (Exception e) {
             e.printStackTrace();
+            Toast.makeText(routeinfo.this, "Error in finalizing route!", Toast.LENGTH_SHORT).show();
+            finish();
+
         }
 
 
