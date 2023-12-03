@@ -33,12 +33,21 @@ public class incidentHistory extends AppCompatActivity {
     private MapView incidentMapView;
     private GoogleMap googleMap;
     private Polyline routePolyline;
+    String start, end, lat1, long1, lat2, long2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_incident_history);
         Intent intent = this.getIntent();
+        start = intent.getStringExtra("start");
+        end = intent.getStringExtra("end");
+        lat1 = intent.getStringExtra("lat1");
+        long1 = intent.getStringExtra("long1");
+        lat2 = intent.getStringExtra("lat2");
+        long2 = intent.getStringExtra("long2");
+
+
         incidentMapView = findViewById(R.id.incidentMapView);
         incidentMapView.onCreate(savedInstanceState);
 
@@ -52,10 +61,10 @@ public class incidentHistory extends AppCompatActivity {
     }
 
     private void fetchIncidentLocations() {
-        // Replace these coordinates with the actual coordinates of your incidents
+
         String incidentLocationUrl = "https://maps.googleapis.com/maps/api/directions/json" +
-                "?origin=49.9393,-119.3947" +
-                "&destination=49.9322,-119.3992" +
+                "?origin=" + lat1 + "," + long1 +
+                "&destination=" + lat2 + "," + long2 +
                 "&key=AIzaSyC7ag49tvfpeOkIjnlZTSzKiKW6xR9wkAg";
 
         new FetchIncidentLocationsTask().execute(incidentLocationUrl);
@@ -110,8 +119,8 @@ public class incidentHistory extends AppCompatActivity {
                 LatLng originLatLng = new LatLng(startLocation.getDouble("lat"), startLocation.getDouble("lng"));
                 LatLng destinationLatLng = new LatLng(endLocation.getDouble("lat"), endLocation.getDouble("lng"));
 
-                googleMap.addMarker(new MarkerOptions().position(originLatLng).title("UBCO"));
-                googleMap.addMarker(new MarkerOptions().position(destinationLatLng).title("U3"));
+                googleMap.addMarker(new MarkerOptions().position(originLatLng).title(start));
+                googleMap.addMarker(new MarkerOptions().position(destinationLatLng).title(end));
 
                 googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                     @Override
