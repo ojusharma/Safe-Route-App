@@ -40,7 +40,7 @@
         android:id="@+id/incidentMapView"
         android:layout_width="325dp"
         android:layout_height="255dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile" />
@@ -61,41 +61,47 @@
 
 
     <ScrollView
-        android:layout_width="230dp"
-        android:layout_height="224dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/scrollView"
+        android:layout_width="321dp"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="44dp"
+        android:background="#FFFFFF"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714">
+        app:layout_constraintTop_toBottomOf="@+id/incidentMapView">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:drawableLeft="@drawable/fire"
+                android:gravity="center"
                 android:padding="8dp"
                 android:text="    27th February , 2023"
-                android:drawableLeft="@drawable/fire"
-                android:textSize="16sp"
-                android:gravity="center"/>
+                android:textColor="#000000"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fire hazard on John Hindle Drive"
+                android:background="#D3D3D3"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:paddingBottom="4dp" />
+                android:paddingBottom="4dp"
+                android:text="Fire hazard on John Hindle Drive" />
+
             <ImageView
                 android:id="@+id/firescale"
-                android:layout_width="241dp"
+                android:layout_width="match_parent"
                 android:layout_height="82dp"
+                android:background="#D3D3D3"
                 android:padding="8dp"
                 android:src="@drawable/firescale"
                 android:textSize="16sp"
@@ -105,42 +111,62 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="10th January , 2023"
+                android:background="#FFFFFF"
                 android:drawableLeft="@drawable/caracc"
                 android:drawablePadding="10dip"
+                android:gravity="center"
                 android:padding="8dp"
-                android:textSize="16sp"
-                android:gravity="center"/>
+                android:text="10th January , 2023"
+                android:textColor="#000000"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ice-Skidding Accident on Academy Way"
+                android:background="#D3D3D3"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:paddingBottom="4dp"
+                android:text="Ice-Skidding Accident on Academy Way"
+
                 />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="       23rd June , 2022"
-                android:padding="8dp"
-                android:textSize="16sp"
+                android:background="#87CEEB"
                 android:drawableLeft="@drawable/stabbing"
                 android:drawablePadding="10dip"
-                />
+                android:padding="8dp"
+                android:text="       23rd June , 2022"
+                android:textColor="#000000"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
+                android:background="#D3D3D3"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:text="Attempted Stabbing in front of Corner Store." />
 
 
-
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="193dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="32dp"
+        android:text="Incident History "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/profile"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
