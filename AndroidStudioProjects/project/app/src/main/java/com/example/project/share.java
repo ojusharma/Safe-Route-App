@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -33,4 +34,11 @@ public class share extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void onClick3(View v){
+        Intent intent = new Intent(Intent.ACTION_VIEW, ContactsContract.Contacts.CONTENT_URI);
+
+        intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+        startActivity(intent);
+    }
+
 }
