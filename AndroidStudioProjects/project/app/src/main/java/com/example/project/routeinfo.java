@@ -4,8 +4,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,7 +30,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class routeinfo extends AppCompatActivity {
@@ -37,9 +37,13 @@ public class routeinfo extends AppCompatActivity {
     private MapView mapView;
     private GoogleMap googleMap;
     private Polyline routePolyline;
-    String start, end;
+    String start, end, mode;
     ArrayList<String> locationList, latLong;
     String[] latLongs;
+    TextView textViewCar, textViewWalk;
+    String[] durationDistance;
+    String distanceTextWalk, durationTextWalk ,distanceTextCar, durationTextCar;
+    int i;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,12 +54,18 @@ public class routeinfo extends AppCompatActivity {
         end = intent.getStringExtra("End");
         ArrayList<String> locationList = new ArrayList<>();
         latLongs = new String[4];
+        i=0;
+        durationDistance = new String[2];
+        distanceTextWalk = durationTextWalk =distanceTextCar= durationTextCar="";
 
         locationList.add(start);
         locationList.add(end);
         System.out.println(start + end);
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
+
+        textViewCar = findViewById(R.id.textViewCar);
+        textViewWalk = findViewById(R.id.textViewWalk);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap map) {
@@ -64,26 +74,6 @@ public class routeinfo extends AppCompatActivity {
         });
         new Geocoding().execute(locationList);
 
-    }
-
-    private void fetchDirections(ArrayList<String> latLong1) {
-
-        if(latLong1.size()==4)
-        {
-            String directionsUrl = "https://maps.googleapis.com/maps/api/directions/json" +
-                    "?origin=" + latLong1.get(0) + "," + latLong1.get(1) +
-                    "&destination=" + latLong1.get(2)+ "," + latLong1.get(3) +
-                    "&key=AIzaSyC7ag49tvfpeOkIjnlZTSzKiKW6xR9wkAg";
-            latLongs[0] = latLong1.get(0);
-            latLongs[1] = latLong1.get(1);
-            latLongs[2] = latLong1.get(2);
-            latLongs[3] = latLong1.get(3);
-            new FetchDirectionsTask().execute(directionsUrl);
-        }
-        else
-        {
-            Toast.makeText(routeinfo.this, "Failed to fetch data. Check location name!", Toast.LENGTH_SHORT).show(); finish();
-        }
     }
 
     private class Geocoding extends AsyncTask<List<String>, Void, String[]> {
@@ -163,6 +153,27 @@ public class routeinfo extends AppCompatActivity {
         }
     }
 
+    private void fetchDirections(ArrayList<String> latLong1) {
+
+        if(latLong1.size()==4)
+        {
+            String directionsUrl = "https://maps.googleapis.com/maps/api/directions/json" +
+                    "?origin=" + latLong1.get(0) + "," + latLong1.get(1) +
+                    "&destination=" + latLong1.get(2)+ "," + latLong1.get(3) +
+                    "&key=AIzaSyC7ag49tvfpeOkIjnlZTSzKiKW6xR9wkAg";
+            latLongs[0] = latLong1.get(0);
+            latLongs[1] = latLong1.get(1);
+            latLongs[2] = latLong1.get(2);
+            latLongs[3] = latLong1.get(3);
+            new FetchDirectionsTask().execute(directionsUrl);
+        }
+        else
+        {
+            Toast.makeText(routeinfo.this, "Failed to fetch data. Check location name!", Toast.LENGTH_SHORT).show(); finish();
+        }
+    }
+
+
     private class FetchDirectionsTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -237,15 +248,95 @@ public class routeinfo extends AppCompatActivity {
             }
             LatLngBounds bounds = builder1.build();
             googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+            DistanceMatrixRequest d = new DistanceMatrixRequest();
+            d.execute(new String[]{start, end});
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(routeinfo.this, "Error in finalizing route!", Toast.LENGTH_SHORT).show();
             finish();
 
         }
+    }
 
+    public class DistanceMatrixRequest extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            String responses="";
+            while(i!=2) {
+                String response="";
+                HttpURLConnection urlConnection = null;
+                try {
+                    String origin = strings[0];
+                    String destination = strings[1];
+                    String mode;
+                    if (i == 0) {
+                        mode = "walking";
+                    } else {
+                        mode = "driving";
+                    }
+
+                    String apiKey = "AIzaSyC7ag49tvfpeOkIjnlZTSzKiKW6xR9wkAg";
+
+                    String urlString = "https://maps.googleapis.com/maps/api/distancematrix/json?" +
+                            "origins=" + origin +
+                            "&destinations=" + destination +
+                            "&key=" + apiKey +
+                            "&mode=" + mode;
+
+                    URL url = new URL(urlString);
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream inputStream = urlConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    durationDistance[i] = stringBuilder.toString();
+                    i++;
+
+                } catch (Exception e) {
+                    Toast.makeText(routeinfo.this, "Error retrieving Route Time Info!", Toast.LENGTH_SHORT).show();
+                    finish();
+                } finally {
+                    if (urlConnection != null) {
+                        urlConnection.disconnect();
+                    }
+                }
+            }
+            return responses;
+        }
+
+        @Override
+        protected void onPostExecute(String response) {
+            try {
+                JSONObject jsonObject = new JSONObject(durationDistance[0]);
+                JSONObject element = jsonObject.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(0);
+                distanceTextWalk = element.getJSONObject("distance").getString("text");
+                 durationTextWalk = element.getJSONObject("duration").getString("text");
+
+                JSONObject jsonObject1 = new JSONObject(durationDistance[1]);
+                JSONObject element1 = jsonObject1.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(0);
+                distanceTextCar = element1.getJSONObject("distance").getString("text");
+                durationTextCar = element1.getJSONObject("duration").getString("text");
+                setDistanceDuration();
+
+            } catch (Exception e) {
+                Toast.makeText(routeinfo.this, "Error retrieving Route Time Info!", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
+
+    public void setDistanceDuration()
+    {
+        textViewWalk.setText("Walking\n"+durationTextWalk+"\n"+distanceTextWalk);
+        textViewCar.setText("Driving\n"+durationTextCar+"\n"+distanceTextCar);
+        textViewCar.setVisibility(View.VISIBLE);
+        textViewWalk.setVisibility(View.VISIBLE);
 
     }
+
 
     @Override
     protected void onResume() {
