@@ -2,6 +2,7 @@ package com.example.project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -97,8 +98,19 @@ public class helpchat extends AppCompatActivity {
                         t6p.setImageResource(R.drawable.profile_icon);
 
                     }
-                }, 2500);
+                }, 1500);
             }
         }
+    }
+
+    public void back(View v){
+        finish();
+
+    }
+
+    public void onHome(View view)
+    {
+        Intent intent = new Intent(this, homescreen.class);
+        startActivity(intent);
     }
 }
