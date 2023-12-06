@@ -8,12 +8,13 @@
 
     <Button
         android:id="@+id/report"
-        android:layout_width="218dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="262dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@android:color/holo_red_dark"
         android:onClick="onClick4"
         android:text="Report Incident/Seek Help"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,21 +86,22 @@
         android:text="Travel Made Safe!"
         android:textSize="20sp"
         android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/maintext" />
 
     <Button
         android:id="@+id/start"
-        android:layout_width="128dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="190dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="56dp"
         android:backgroundTint="#000000"
         android:onClick="onClick3"
         android:text="Start Route"
-        android:textSize="15dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hellotext" />
 </androidx.constraintlayout.widget.ConstraintLayout>

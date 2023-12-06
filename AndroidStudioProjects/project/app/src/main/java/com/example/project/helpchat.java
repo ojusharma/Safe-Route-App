@@ -53,7 +53,7 @@ public class helpchat extends AppCompatActivity {
                 // Code to be executed after 2 seconds
                 // For example, displaying a TextView
 
-                t5.setText("Hi How Can i help you ?");
+                t5.setText("Hello there! How can I help you ?");
                 t5.setBackgroundResource(R.drawable.chat_bubble2);
                 t5p.setImageResource(R.drawable.profile_icon);
 
@@ -78,6 +78,14 @@ public class helpchat extends AppCompatActivity {
                 t2.setText("  " + andar);
                 t2.setBackgroundResource(R.drawable.chat_bubble);
                 t2p.setImageResource(R.drawable.profile_icon);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        t6.setText("Would you like me to call 911? If there is no response, I will place a call on your behalf");
+                        t6.setBackgroundResource(R.drawable.chat_bubble2);
+                        t6p.setImageResource(R.drawable.profile_icon);
+                    }
+                }, 1500);
 
             } else if (t3.getText().toString().length() == 0) {
                 t3.setText("  " + andar);
@@ -87,18 +95,7 @@ public class helpchat extends AppCompatActivity {
                 t4.setText("  " + andar);
                 t4.setBackgroundResource(R.drawable.chat_bubble);
                 t4p.setImageResource(R.drawable.profile_icon);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Code to be executed after 2 seconds
-                        // For example, displaying a TextView
 
-                        t6.setText("Call 911 please !");
-                        t6.setBackgroundResource(R.drawable.chat_bubble2);
-                        t6p.setImageResource(R.drawable.profile_icon);
-
-                    }
-                }, 1500);
             }
         }
     }
