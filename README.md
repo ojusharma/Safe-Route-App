@@ -11,8 +11,8 @@ Welcome to the Safe Route Sharing App repository! This Android Studio project of
 
 ## Pictures!
 
-![image](https://github.com/ojusharma/route-sharing-app/assets/112976298/0cbaedb4-69a1-4fda-a698-b985bfa84920)
-![image](https://github.com/ojusharma/route-sharing-app/assets/112976298/0f90e43f-c40e-4157-bb78-2a1afd72eec6)
+![image](https://github.com/ojusharma/route-sharing-app/assets/112976298/3b64f690-aa17-4e90-8691-04a4b51e5b5b)
+
 
 
   
