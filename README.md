@@ -24,10 +24,11 @@ To use the Safe Route Sharing App:
 - To share a route, navigate to the desired destination and select "Share Route."
 - Access incident history by reviewing route details or accessing the incidents tab.
 
-  ## Pictures!
+## Pictures!
 
 ![image](https://github.com/ojusharma/route-sharing-app/assets/112976298/3b64f690-aa17-4e90-8691-04a4b51e5b5b)
 ![image](https://github.com/ojusharma/route-sharing-app/assets/112976298/89e6521f-16fe-4ec8-b4ec-69daa9800578)
+
 
 ## User Guidelines
 
