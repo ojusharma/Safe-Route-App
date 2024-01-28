@@ -9,6 +9,14 @@ Welcome to the Safe Route Sharing App repository! This Android Studio project of
 - **Navigation**: Enjoy turn-by-turn navigation with safety alerts for a secure journey.
 - **User-Friendly Interface**: Intuitive design ensures a smooth and enjoyable user experience.
 
+## Pictures!
+
+![image](https://github.com/ojusharma/route-sharing-app/assets/112976298/0cbaedb4-69a1-4fda-a698-b985bfa84920)
+![image](https://github.com/ojusharma/route-sharing-app/assets/112976298/0f90e43f-c40e-4157-bb78-2a1afd72eec6)
+
+
+  
+
 ## Installation
 
 To use the Safe Route Sharing App:
